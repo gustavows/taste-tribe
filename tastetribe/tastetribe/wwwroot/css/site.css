@@ -29,3 +29,46 @@ body {
 .form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
   text-align: start;
 }
+
+/* ===== BRAND COLORS ===== */
+:root {
+    --primary-gradient: linear-gradient(90deg, #ff7a18, #ff3c3c, #e91e63);
+    --dark-bg: #0f0f0f;
+    --text-light: #ffffff;
+}
+
+/* ===== NAVBAR ===== */
+.navbar {
+    background: black !important;
+}
+
+    .navbar .nav-link,
+    .navbar .navbar-brand {
+        color: white !important;
+        font-weight: 500;
+    }
+
+/* ===== HERO SECTION ===== */
+.hero {
+    background: var(--primary-gradient);
+    color: white;
+    padding: 60px 20px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* ===== BUTTONS ===== */
+.btn-brand {
+    background: var(--primary-gradient);
+    color: white;
+    border: none;
+}
+
+    .btn-brand:hover {
+        opacity: 0.9;
+    }
+
+/* ===== PAGE BACKGROUND ===== */
+body {
+    background-color: #f8f9fa;
+}
