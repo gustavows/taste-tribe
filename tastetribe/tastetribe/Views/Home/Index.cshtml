@@ -1,8 +1,33 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "🍔 Taste Tribe";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="text-center mt-5">
+
+    <h1 class="display-4">🍔 Taste Tribe</h1>
+    <p class="lead">Discover where your friends are eating and what dishes they love on campus.</p>
+
+</div>
+
+<hr />
+
+<div class="mt-4">
+    <h3>🔍 Recent Activity</h3>
+
+    <ul class="list-group">
+        <li class="list-group-item">Alex ate Chicken Alfredo at Olive Garden ⭐ 4.5</li>
+        <li class="list-group-item">Maria tried Sushi Roll at Bento Cafe 🍣</li>
+        <li class="list-group-item">James had a Burrito at Chipotle 🌯</li>
+    </ul>
+</div>
+
+<div class="mt-5">
+    <h3>⚙️ Actions</h3>
+
+    <div class="d-flex gap-2 flex-wrap mt-3">
+        <a class="btn btn-success" href="/Home/Create">Create</a>
+        <a class="btn btn-primary" href="/Home/Read">Read</a>
+        <a class="btn btn-warning" href="/Home/Update">Update</a>
+        <a class="btn btn-danger" href="/Home/Delete">Delete</a>
+    </div>
 </div>
