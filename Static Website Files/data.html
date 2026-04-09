@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Taste Tribe</title>
+<link rel="stylesheet" href="css/site.css"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+<div class="container-fluid">
+<a class="navbar-brand" href="index.html">Taste Tribe</a>
+<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">
+<span class="navbar-toggler-icon"></span>
+</button>
+<div class="collapse navbar-collapse" id="nav">
+<ul class="navbar-nav ms-auto">
+<li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+<li class="nav-item"><a class="nav-link" href="data.html">Data</a></li>
+<li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+</ul>
+</div>
+</div>
+</nav>
+
+<div class="container mt-4">
+<main>
+
+<h1 class="text-center mt-4">Food Trends Dashboard</h1>
+
+<div class="row mt-4">
+<div class="col-md-6"><canvas id="barChart"></canvas></div>
+<div class="col-md-6"><canvas id="pieChart"></canvas></div>
+</div>
+
+<div class="mt-5">
+<canvas id="lineChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+new Chart(document.getElementById("barChart"), {type:"bar",data:{labels:["Chipotle","Chick-fil-A","Bento Cafe"],datasets:[{data:[4.5,4.7,4.3]}]}});
+new Chart(document.getElementById("pieChart"), {type:"pie",data:{labels:["Mexican","American","Asian"],datasets:[{data:[40,35,25]}]}});
+new Chart(document.getElementById("lineChart"), {type:"line",data:{labels:["Mon","Tue","Wed","Thu","Fri"],datasets:[{data:[10,15,12,20,25]}]}});
+</script>
+
+</main>
+</div>
+
+<footer class="border-top text-muted mt-5">
+<div class="container py-3">© 2026 Taste Tribe</div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
