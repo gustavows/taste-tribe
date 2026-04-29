@@ -1,11 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using tastetribe.Models;
+using tastetribe.Data;
 
 namespace tastetribe.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly AppDbContext _context;
+
+        public HomeController(AppDbContext context)
+        {
+            _context = context;
+        }
+
         // Home Page
         public IActionResult Index()
         {
