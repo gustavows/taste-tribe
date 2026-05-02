@@ -32,6 +32,12 @@ namespace tastetribe.Controllers
             return View();
         }
 
+        // Find Restaurants Page
+        public IActionResult FindRestaurants()
+        {
+            return View();
+        }
+
         // CRUD Pages
         public IActionResult Create()
         {

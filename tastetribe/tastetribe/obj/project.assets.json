@@ -1,5 +1,5 @@
 {
-  "version": 4,
+  "version": 3,
   "targets": {
     "net10.0": {
       "Azure.Core/1.38.0": {
@@ -2989,23 +2989,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hfras\\.nuget\\packages\\": {},
+    "C:\\Users\\zacha\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hfras\\Desktop\\Classwork\\Spring 2026\\App Dev for Analytics\\Final Project\\taste-tribe\\tastetribe\\tastetribe\\tastetribe.csproj",
+      "projectUniqueName": "C:\\Users\\zacha\\tastytribe\\taste-tribe\\tastetribe\\tastetribe\\tastetribe.csproj",
       "projectName": "tastetribe",
-      "projectPath": "C:\\Users\\hfras\\Desktop\\Classwork\\Spring 2026\\App Dev for Analytics\\Final Project\\taste-tribe\\tastetribe\\tastetribe\\tastetribe.csproj",
-      "packagesPath": "C:\\Users\\hfras\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hfras\\Desktop\\Classwork\\Spring 2026\\App Dev for Analytics\\Final Project\\taste-tribe\\tastetribe\\tastetribe\\obj\\",
+      "projectPath": "C:\\Users\\zacha\\tastytribe\\taste-tribe\\tastetribe\\tastetribe\\tastetribe.csproj",
+      "packagesPath": "C:\\Users\\zacha\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\zacha\\tastytribe\\taste-tribe\\tastetribe\\tastetribe\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\hfras\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\zacha\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -3014,11 +3014,11 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "projectReferences": {}
         }
@@ -3033,11 +3033,10 @@
         "auditLevel": "low",
         "auditMode": "all"
       },
-      "SdkAnalysisLevel": "10.0.300"
+      "SdkAnalysisLevel": "10.0.200"
     },
     "frameworks": {
       "net10.0": {
-        "framework": "net10.0",
         "targetAlias": "net10.0",
         "dependencies": {
           "Microsoft.EntityFrameworkCore.Design": {
@@ -3076,7 +3075,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.300-preview.0.26177.108/PortableRuntimeIdentifierGraph.json",
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
         "packagesToPrune": {
           "Microsoft.AspNetCore": "(,10.0.32767]",
           "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",
