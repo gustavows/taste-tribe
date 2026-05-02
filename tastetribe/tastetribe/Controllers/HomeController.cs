@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using tastetribe.Models;
 using tastetribe.Data;
 
@@ -38,25 +41,120 @@ namespace tastetribe.Controllers
             return View();
         }
 
-        // CRUD Pages
-        public IActionResult Create()
+        // CRUD Pages for Review entity
+        // GET: /Home/Create
+        public async Task<IActionResult> Create()
         {
+            ViewBag.Users = new SelectList(await _context.Users.ToListAsync(), "UserId", "FirstName");
+            ViewBag.Restaurants = new SelectList(await _context.Restaurants.ToListAsync(), "RestaurantId", "Name");
+            ViewBag.Dishes = new SelectList(await _context.Dishes.ToListAsync(), "DishId", "Name");
             return View();
         }
 
-        public IActionResult Read()
+        // POST: /Home/Create
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Review review)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                _context.Reviews.Add(review);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Read));
+            }
+
+            ViewBag.Users = new SelectList(await _context.Users.ToListAsync(), "UserId", "FirstName", review.UserId);
+            ViewBag.Restaurants = new SelectList(await _context.Restaurants.ToListAsync(), "RestaurantId", "Name", review.RestaurantId);
+            ViewBag.Dishes = new SelectList(await _context.Dishes.ToListAsync(), "DishId", "Name", review.DishId);
+            return View(review);
         }
 
-        public IActionResult Update()
+        // GET: /Home/Read
+        public async Task<IActionResult> Read()
         {
-            return View();
+            var reviews = await _context.Reviews
+                .Include(r => r.User)
+                .Include(r => r.Restaurant)
+                .Include(r => r.Dish)
+                .ToListAsync();
+
+            return View(reviews);
         }
 
-        public IActionResult Delete()
+        // GET: /Home/Update/5
+        public async Task<IActionResult> Update(int? id)
         {
-            return View();
+            if (id == null) return NotFound();
+
+            var review = await _context.Reviews.FindAsync(id.Value);
+            if (review == null) return NotFound();
+
+            ViewBag.Users = new SelectList(await _context.Users.ToListAsync(), "UserId", "FirstName", review.UserId);
+            ViewBag.Restaurants = new SelectList(await _context.Restaurants.ToListAsync(), "RestaurantId", "Name", review.RestaurantId);
+            ViewBag.Dishes = new SelectList(await _context.Dishes.ToListAsync(), "DishId", "Name", review.DishId);
+
+            return View(review);
+        }
+
+        // POST: /Home/Update/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Update(int id, Review review)
+        {
+            if (id != review.ReviewId) return BadRequest();
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(review);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!await _context.Reviews.AnyAsync(r => r.ReviewId == id))
+                        return NotFound();
+                    throw;
+                }
+
+                return RedirectToAction(nameof(Read));
+            }
+
+            ViewBag.Users = new SelectList(await _context.Users.ToListAsync(), "UserId", "FirstName", review.UserId);
+            ViewBag.Restaurants = new SelectList(await _context.Restaurants.ToListAsync(), "RestaurantId", "Name", review.RestaurantId);
+            ViewBag.Dishes = new SelectList(await _context.Dishes.ToListAsync(), "DishId", "Name", review.DishId);
+            return View(review);
+        }
+
+        // GET: /Home/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null) return NotFound();
+
+            var review = await _context.Reviews
+                .Include(r => r.User)
+                .Include(r => r.Restaurant)
+                .Include(r => r.Dish)
+                .FirstOrDefaultAsync(r => r.ReviewId == id.Value);
+
+            if (review == null) return NotFound();
+
+            return View(review);
+        }
+
+        // POST: /Home/DeleteConfirmed/5
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var review = await _context.Reviews.FindAsync(id);
+            if (review != null)
+            {
+                _context.Reviews.Remove(review);
+                await _context.SaveChangesAsync();
+            }
+
+            return RedirectToAction(nameof(Read));
         }
 
         // Default

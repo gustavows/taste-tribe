@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\zacha\\tastytribe\\taste-tribe\\tastetribe\\tastetribe\\tastetribe.csproj": {}
+    "C:\\Users\\daysa\\OneDrive\\Desktop\\app_dev_final\\tastetribe\\tastetribe\\tastetribe.csproj": {}
   },
   "projects": {
-    "C:\\Users\\zacha\\tastytribe\\taste-tribe\\tastetribe\\tastetribe\\tastetribe.csproj": {
+    "C:\\Users\\daysa\\OneDrive\\Desktop\\app_dev_final\\tastetribe\\tastetribe\\tastetribe.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\zacha\\tastytribe\\taste-tribe\\tastetribe\\tastetribe\\tastetribe.csproj",
+        "projectUniqueName": "C:\\Users\\daysa\\OneDrive\\Desktop\\app_dev_final\\tastetribe\\tastetribe\\tastetribe.csproj",
         "projectName": "tastetribe",
-        "projectPath": "C:\\Users\\zacha\\tastytribe\\taste-tribe\\tastetribe\\tastetribe\\tastetribe.csproj",
-        "packagesPath": "C:\\Users\\zacha\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\zacha\\tastytribe\\taste-tribe\\tastetribe\\tastetribe\\obj\\",
+        "projectPath": "C:\\Users\\daysa\\OneDrive\\Desktop\\app_dev_final\\tastetribe\\tastetribe\\tastetribe.csproj",
+        "packagesPath": "C:\\Users\\daysa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\daysa\\OneDrive\\Desktop\\app_dev_final\\tastetribe\\tastetribe\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\zacha\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\daysa\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,7 +26,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -45,7 +44,7 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.200"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net10.0": {
@@ -87,7 +86,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.201/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.AspNetCore": "(,10.0.32767]",
             "Microsoft.AspNetCore.Antiforgery": "(,10.0.32767]",

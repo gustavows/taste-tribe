@@ -1,12 +1,15 @@
-﻿@*
-    <h1>Read Page</h1>
-*@
+﻿@model IEnumerable<tastetribe.Models.Review>
+
 @{
 }
 
 <h1 class="mt-4">📖 View Reviews</h1>
 
-<p>This page displays sample restaurant reviews.</p>
+<p>List of reviews.</p>
+
+<p>
+    <a asp-action="Create" class="btn btn-success">➕ New Review</a>
+</p>
 
 <table class="table table-striped mt-3">
     <thead>
@@ -15,20 +18,22 @@
             <th>Restaurant</th>
             <th>Dish</th>
             <th>Rating</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
+    @foreach (var r in Model)
+    {
         <tr>
-            <td>Alex</td>
-            <td>Chipotle</td>
-            <td>Burrito</td>
-            <td>⭐ 4.5</td>
+            <td>@(r.User?.FirstName ?? "-")</td>
+            <td>@(r.Restaurant?.Name ?? "-")</td>
+            <td>@(r.Dish?.Name ?? "-")</td>
+            <td>@r.Rating</td>
+            <td>
+                <a asp-action="Update" asp-route-id="@r.ReviewId" class="btn btn-sm btn-warning">Edit</a>
+                <a asp-action="Delete" asp-route-id="@r.ReviewId" class="btn btn-sm btn-danger ms-2">Delete</a>
+            </td>
         </tr>
-        <tr>
-            <td>Maria</td>
-            <td>Bento Cafe</td>
-            <td>Sushi Roll</td>
-            <td>⭐ 4.7</td>
-        </tr>
+    }
     </tbody>
 </table>

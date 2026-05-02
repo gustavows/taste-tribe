@@ -20,7 +20,7 @@ namespace tastetribe.Controllers
         }
 
         [HttpGet("by-location")]
-        public async Task<IActionResult> GetByLocation([FromQuery] string zip = null)
+        public async Task<IActionResult> GetByLocation([FromQuery] string? zip = null)
         {
             if (string.IsNullOrWhiteSpace(zip))
                 return BadRequest("Zip code is required.");

@@ -1,21 +1,40 @@
-﻿@*
-    <h1>Create Page</h1>
-*@
+﻿@model tastetribe.Models.Review
+
 @{
 }
 
 <h1 class="mt-4">➕ Create Review</h1>
 
-<p>This page simulates how a user would add a new restaurant review.</p>
+<p>Add a new restaurant review.</p>
 
-<label>Restaurant Name</label>
-<input type="text" class="form-control">
+<form asp-action="Create" method="post">
+    @Html.AntiForgeryToken()
 
-<label>Dish Name</label>
-<input type="text" class="form-control">
+    <div class="mb-3">
+        <label class="form-label">User</label>
+        <select asp-for="UserId" class="form-select" asp-items="ViewBag.Users"></select>
+    </div>
 
-<label>Rating</label>
-<input type="number" class="form-control">
+    <div class="mb-3">
+        <label class="form-label">Restaurant</label>
+        <select asp-for="RestaurantId" class="form-select" asp-items="ViewBag.Restaurants"></select>
+    </div>
 
-<label>Review</label>
-<textarea class="form-control"></textarea>
+    <div class="mb-3">
+        <label class="form-label">Dish</label>
+        <select asp-for="DishId" class="form-select" asp-items="ViewBag.Dishes"></select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Rating</label>
+        <input asp-for="Rating" type="number" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Review</label>
+        <textarea asp-for="ReviewText" class="form-control"></textarea>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Create</button>
+    <a asp-action="Read" class="btn btn-secondary ms-2">Back to List</a>
+</form>

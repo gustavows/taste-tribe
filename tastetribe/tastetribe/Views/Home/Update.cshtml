@@ -1,30 +1,41 @@
-﻿@*
-    <h1>Update Page</h1>
-*@
+﻿@model tastetribe.Models.Review
+
 @{
 }
 
 <h1 class="mt-4">✏️ Update Review</h1>
 
-<p>This page simulates editing an existing review.</p>
-
 <div class="card p-4 mt-3">
-    <form>
+    <form asp-action="Update" method="post">
+        @Html.AntiForgeryToken()
+        <input type="hidden" asp-for="ReviewId" />
+
+        <div class="mb-3">
+            <label class="form-label">User</label>
+            <select asp-for="UserId" class="form-select" asp-items="ViewBag.Users"></select>
+        </div>
+
         <div class="mb-3">
             <label class="form-label">Restaurant</label>
-            <input type="text" class="form-control" value="Chipotle">
+            <select asp-for="RestaurantId" class="form-select" asp-items="ViewBag.Restaurants"></select>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Dish</label>
-            <input type="text" class="form-control" value="Burrito">
+            <select asp-for="DishId" class="form-select" asp-items="ViewBag.Dishes"></select>
         </div>
 
         <div class="mb-3">
             <label class="form-label">Rating</label>
-            <input type="number" class="form-control" value="4">
+            <input asp-for="Rating" type="number" class="form-control" />
         </div>
 
-        <button class="btn btn-warning">Update (Simulation)</button>
+        <div class="mb-3">
+            <label class="form-label">Review</label>
+            <textarea asp-for="ReviewText" class="form-control"></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-warning">Update</button>
+        <a asp-action="Read" class="btn btn-secondary ms-2">Back</a>
     </form>
 </div>

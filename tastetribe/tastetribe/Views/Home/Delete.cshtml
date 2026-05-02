@@ -1,15 +1,32 @@
-﻿@*
-    <h1>Dealete Page</h1>
-*@
+﻿@model tastetribe.Models.Review
+
 @{
 }
 
 <h1 class="mt-4">🗑️ Delete Review</h1>
 
-<p>This page simulates removing a review from the system.</p>
+<p>Are you sure you want to delete this review?</p>
 
-<p><strong>User:</strong> Alex</p>
-<p><strong>Restaurant:</strong> Chipotle</p>
-<p><strong>Dish:</strong> Burrito</p>
-<p><strong>Rating:</strong> ⭐ 4</p>
-<p><strong>Review:</strong> Great food!</p>
+<dl class="row">
+    <dt class="col-sm-2">User</dt>
+    <dd class="col-sm-10">@Model.User?.FirstName</dd>
+
+    <dt class="col-sm-2">Restaurant</dt>
+    <dd class="col-sm-10">@Model.Restaurant?.Name</dd>
+
+    <dt class="col-sm-2">Dish</dt>
+    <dd class="col-sm-10">@Model.Dish?.Name</dd>
+
+    <dt class="col-sm-2">Rating</dt>
+    <dd class="col-sm-10">@Model.Rating</dd>
+
+    <dt class="col-sm-2">Review</dt>
+    <dd class="col-sm-10">@Model.ReviewText</dd>
+</dl>
+
+<form asp-action="DeleteConfirmed" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" value="@Model.ReviewId" />
+    <button type="submit" class="btn btn-danger">Delete</button>
+    <a asp-action="Read" class="btn btn-secondary ms-2">Cancel</a>
+</form>
