@@ -46,6 +46,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/daysa/OneDrive/Desktop/app_dev_final/tastetribe/tastetribe/Views/Home/DeleteList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxEZWxldGVMaXN0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/daysa/OneDrive/Desktop/app_dev_final/tastetribe/tastetribe/Views/Home/FindRestaurants.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxGaW5kUmVzdGF1cmFudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -64,6 +68,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/daysa/OneDrive/Desktop/app_dev_final/tastetribe/tastetribe/Views/Home/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGRhdGUuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/daysa/OneDrive/Desktop/app_dev_final/tastetribe/tastetribe/Views/Home/UpdateList.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxVcGRhdGVMaXN0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/daysa/OneDrive/Desktop/app_dev_final/tastetribe/tastetribe/Views/Shared/Error.cshtml]

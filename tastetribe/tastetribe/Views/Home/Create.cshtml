@@ -9,20 +9,39 @@
 
 <form asp-action="Create" method="post">
     @Html.AntiForgeryToken()
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+    @if (TempData["Error"] != null)
+    {
+        <div class="alert alert-danger">@TempData["Error"]</div>
+    }
 
     <div class="mb-3">
-        <label class="form-label">User</label>
-        <select asp-for="UserId" class="form-select" asp-items="ViewBag.Users"></select>
+        <label class="form-label">User First Name</label>
+        <input name="userFirstName" class="form-control" />
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Restaurant</label>
-        <select asp-for="RestaurantId" class="form-select" asp-items="ViewBag.Restaurants"></select>
+        <label class="form-label">User Last Name (optional)</label>
+        <input name="userLastName" class="form-control" />
+    </div>
+
+    @if (ViewBag.UsersList != null)
+    {
+        <div class="mb-3">
+            <small>Or choose an existing user:</small>
+            <select asp-for="UserId" class="form-select" asp-items="ViewBag.Users"></select>
+        </div>
+    }
+
+    <div class="mb-3">
+        <label class="form-label">Restaurant Name</label>
+        <input name="restaurantName" class="form-control" />
     </div>
 
     <div class="mb-3">
-        <label class="form-label">Dish</label>
-        <select asp-for="DishId" class="form-select" asp-items="ViewBag.Dishes"></select>
+        <label class="form-label">Dish Name</label>
+        <input name="dishName" class="form-control" />
     </div>
 
     <div class="mb-3">
@@ -36,5 +55,6 @@
     </div>
 
     <button type="submit" class="btn btn-primary">Create</button>
+    <button type="submit" name="submit" value="saveAndNew" class="btn btn-outline-primary ms-2">Create & Add Another</button>
     <a asp-action="Read" class="btn btn-secondary ms-2">Back to List</a>
 </form>

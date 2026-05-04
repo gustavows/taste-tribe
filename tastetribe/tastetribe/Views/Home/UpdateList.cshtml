@@ -1,0 +1,31 @@
+﻿@model IEnumerable<tastetribe.Models.Review>
+@{
+}
+<h1 class="mt-4">✏️ Select Review to Update</h1>
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>User</th>
+            <th>Restaurant</th>
+            <th>Dish</th>
+            <th>Rating</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var r in Model)
+        {
+            <tr>
+                <td>@r.ReviewId</td>
+                <td>@(r.User?.FirstName ?? "-")</td>
+                <td>@(r.Restaurant?.Name ?? "-")</td>
+                <td>@(r.Dish?.Name ?? "-")</td>
+                <td>@r.Rating</td>
+                <td>
+                    <a asp-action="Update" asp-route-id="@r.ReviewId" class="btn btn-sm btn-warning">Edit</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

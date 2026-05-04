@@ -6,23 +6,39 @@
 <h1 class="mt-4">✏️ Update Review</h1>
 
 <div class="card p-4 mt-3">
-    <form asp-action="Update" method="post">
+    <form asp-action="Update" asp-route-id="@Model.ReviewId" method="post">
         @Html.AntiForgeryToken()
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @if (TempData["Error"] != null)
+        {
+            <div class="alert alert-danger">@TempData["Error"]</div>
+        }
         <input type="hidden" asp-for="ReviewId" />
 
         <div class="mb-3">
             <label class="form-label">User</label>
             <select asp-for="UserId" class="form-select" asp-items="ViewBag.Users"></select>
+            <label class="form-label">User First Name</label>
+            <input name="userFirstName" class="form-control" value="@Model.User?.FirstName" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">User Last Name</label>
+            <input name="userLastName" class="form-control" value="@Model.User?.LastName" />
         </div>
 
         <div class="mb-3">
             <label class="form-label">Restaurant</label>
             <select asp-for="RestaurantId" class="form-select" asp-items="ViewBag.Restaurants"></select>
+            <label class="form-label">Restaurant Name</label>
+            <input name="restaurantName" class="form-control" value="@Model.Restaurant?.Name" />
         </div>
 
         <div class="mb-3">
             <label class="form-label">Dish</label>
             <select asp-for="DishId" class="form-select" asp-items="ViewBag.Dishes"></select>
+            <label class="form-label">Dish Name</label>
+            <input name="dishName" class="form-control" value="@Model.Dish?.Name" />
         </div>
 
         <div class="mb-3">
@@ -39,3 +55,4 @@
         <a asp-action="Read" class="btn btn-secondary ms-2">Back</a>
     </form>
 </div>
+

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "CukojbTnxik=",
+  "dgSpecHash": "3FMSyixua8Y=",
   "success": true,
   "projectFilePath": "C:\\Users\\daysa\\OneDrive\\Desktop\\app_dev_final\\tastetribe\\tastetribe\\tastetribe.csproj",
   "expectedPackageFiles": [
@@ -22,6 +22,7 @@
     "C:\\Users\\daysa\\.nuget\\packages\\microsoft.entityframeworkcore.abstractions\\9.0.4\\microsoft.entityframeworkcore.abstractions.9.0.4.nupkg.sha512",
     "C:\\Users\\daysa\\.nuget\\packages\\microsoft.entityframeworkcore.analyzers\\9.0.4\\microsoft.entityframeworkcore.analyzers.9.0.4.nupkg.sha512",
     "C:\\Users\\daysa\\.nuget\\packages\\microsoft.entityframeworkcore.design\\9.0.4\\microsoft.entityframeworkcore.design.9.0.4.nupkg.sha512",
+    "C:\\Users\\daysa\\.nuget\\packages\\microsoft.entityframeworkcore.inmemory\\9.0.4\\microsoft.entityframeworkcore.inmemory.9.0.4.nupkg.sha512",
     "C:\\Users\\daysa\\.nuget\\packages\\microsoft.entityframeworkcore.relational\\9.0.4\\microsoft.entityframeworkcore.relational.9.0.4.nupkg.sha512",
     "C:\\Users\\daysa\\.nuget\\packages\\microsoft.entityframeworkcore.sqlserver\\9.0.4\\microsoft.entityframeworkcore.sqlserver.9.0.4.nupkg.sha512",
     "C:\\Users\\daysa\\.nuget\\packages\\microsoft.entityframeworkcore.tools\\9.0.4\\microsoft.entityframeworkcore.tools.9.0.4.nupkg.sha512",
