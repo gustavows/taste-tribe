@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("tastetribe")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+02cb6545422a7710d708d050fb8ad8d0f4b0e501")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c97a8a20c64704be7b72d8c96b4d88d9b282e18a")]
 [assembly: System.Reflection.AssemblyProductAttribute("tastetribe")]
 [assembly: System.Reflection.AssemblyTitleAttribute("tastetribe")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
