@@ -51,15 +51,16 @@ namespace tastetribe.Controllers
                 .ToList();
 
             // Pie chart: Cuisine distribution
-            var cuisineData = await _context.Restaurants
-                .GroupBy(r => r.CuisineType)
+            var cuisineData = await _context.Reviews
+                .Include(r => r.Restaurant)
+                .GroupBy(r => r.Restaurant.CuisineType)
                 .Select(g => new {
                     cuisine = g.Key,
                     count = g.Count()
-                })
+                    })
                 .ToListAsync();
 
-            // Line chart: Reviews count (fake "weekly" but dynamic)
+            // Line chart: Reviews count by date
             var weeklyData = reviews
                 .GroupBy(r => r.CreatedAt.Date)
                 .OrderBy(g => g.Key)
@@ -101,7 +102,7 @@ namespace tastetribe.Controllers
         // POST: /Home/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Review? review, string? submit, string? userFirstName, string? userLastName, string? restaurantName, string? dishName)
+        public async Task<IActionResult> Create(Review? review, string? submit, string? userFirstName, string? userLastName, string? restaurantName, string? dishName, string? cuisineType)
         {
             _logger.LogDebug("Create POST called. userFirstName={userFirstName}, userLastName={userLastName}, review.UserId={UserId}", userFirstName, userLastName, review?.UserId);
             review ??= new Review();
@@ -117,7 +118,7 @@ namespace tastetribe.Controllers
 
             if (!string.IsNullOrWhiteSpace(restaurantName))
             {
-                var r = new Restaurant { Name = restaurantName.Trim(), CuisineType = string.Empty };
+                var r = new Restaurant { Name = restaurantName.Trim(), CuisineType = cuisineType?.Trim() ?? string.Empty };
                 _context.Restaurants.Add(r);
                 await _context.SaveChangesAsync();
                 review.RestaurantId = r.RestaurantId;
@@ -224,7 +225,7 @@ namespace tastetribe.Controllers
         // POST: /Home/Update/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Update(int id, Review review, string? userFirstName, string? userLastName, string? restaurantName, string? dishName)
+        public async Task<IActionResult> Update(int id, Review review, string? userFirstName, string? userLastName, string? restaurantName, string? dishName, string? cuisineType)
         {
             if (id != review.ReviewId) return BadRequest();
 
@@ -246,7 +247,7 @@ namespace tastetribe.Controllers
                 }
                 else
                 {
-                    var r = new Restaurant { Name = restaurantName.Trim(), CuisineType = string.Empty };
+                    var r = new Restaurant { Name = restaurantName.Trim(), CuisineType = cuisineType?.Trim() ?? string.Empty };
                     _context.Restaurants.Add(r);
                     await _context.SaveChangesAsync();
                     review.RestaurantId = r.RestaurantId;
@@ -348,6 +349,7 @@ namespace tastetribe.Controllers
 
             return RedirectToAction(nameof(Read));
         }
+
         // GET: /Home/UpdateList
         public async Task<IActionResult> UpdateList()
         {

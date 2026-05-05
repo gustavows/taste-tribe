@@ -1,4 +1,4 @@
-﻿@model tastetribe.Models.Review
+@model tastetribe.Models.Review
 
 @{
 }
@@ -35,6 +35,11 @@
         </div>
 
         <div class="mb-3">
+            <label class="form-label">Cuisine Type</label>
+            <input name="cuisineType" class="form-control" value="@Model.Restaurant?.CuisineType" placeholder="e.g. Italian, Mexican, Japanese..." />
+        </div>
+
+        <div class="mb-3">
             <label class="form-label">Dish</label>
             <select asp-for="DishId" class="form-select" asp-items="ViewBag.Dishes"></select>
             <label class="form-label">Dish Name</label>
@@ -55,4 +60,3 @@
         <a asp-action="Read" class="btn btn-secondary ms-2">Back</a>
     </form>
 </div>
-

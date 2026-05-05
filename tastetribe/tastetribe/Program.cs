@@ -79,6 +79,7 @@ using (var scope = app.Services.CreateScope())
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
+    app.UseDeveloperExceptionPage();
     app.UseHsts();
 }
 
