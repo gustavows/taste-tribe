@@ -10,13 +10,13 @@ namespace tastetribe.Controllers
     public class RestaurantApiController : ControllerBase
     {
         private readonly HttpClient _httpClient;
-        private const string RapidApiKey = "583c0bba26mshca00ed2820d21e1p1c5526jsnf09664a080f7";
-        private const string RapidApiHost = "restaurants-near-me-usa.p.rapidapi.com";
-        private const string ZipEndpoint = "https://restaurants-near-me-usa.p.rapidapi.com/restaurants/location/zipcode/";
+        private readonly IConfiguration _config;
 
-        public RestaurantApiController(IHttpClientFactory httpClientFactory)
+
+        public RestaurantApiController(IHttpClientFactory httpClientFactory, IConfiguration config)
         {
             _httpClient = httpClientFactory.CreateClient();
+            _config = config;
         }
 
         [HttpGet("by-location")]
@@ -25,11 +25,12 @@ namespace tastetribe.Controllers
             if (string.IsNullOrWhiteSpace(zip))
                 return BadRequest("Zip code is required.");
 
-            var url = ZipEndpoint + System.Net.WebUtility.UrlEncode(zip) + "/0";
+            var baseUrl = _config["RapidApi:BaseUrl"];
+            var url = baseUrl + System.Net.WebUtility.UrlEncode(zip) + "/0";
 
             var request = new HttpRequestMessage(HttpMethod.Get, url);
-            request.Headers.Add("x-rapidapi-key", RapidApiKey);
-            request.Headers.Add("x-rapidapi-host", RapidApiHost);
+            request.Headers.Add("x-rapidapi-key", _config["RapidApi:Key"]);
+            request.Headers.Add("x-rapidapi-host", _config["RapidApi:Host"]);
             request.Headers.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
             var response = await _httpClient.SendAsync(request);

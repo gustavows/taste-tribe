@@ -2,44 +2,127 @@
     ViewData["Title"] = "🍔 Taste Tribe";
 }
 
-<div class="text-center mt-5">
-
-    <img src="/images/logo.png" style="max-width: 250px;" class="mb-3" />
-    <p class="lead">Discover where your friends are eating and what dishes they love on campus.</p>
-
-</div>
-
-<hr />
-
-<div class="container mt-4">
+<div class="container mt-5">
 
     <!-- HERO -->
-    <div class="hero">
-        <h1 class="display-4">🍔 Taste Tribe</h1>
-        <p class="lead">Discover where your friends are eating and what dishes they love.</p>
+    <div class="text-center mb-5">
+        <img src="/images/logo.png" class="logo mb-3" />
+        <h1 class="display-4 fw-bold">Taste Tribe</h1>
+        <p class="lead text-muted">
+            Discover where your friends are eating and what dishes they love.
+        </p>
+
+        <div class="mt-4 d-flex justify-content-center gap-3 flex-wrap">
+            <a class="btn btn-brand btn-lg" href="/Home/Create">➕ Add Review</a>
+            <a class="btn btn-outline-dark btn-lg" href="/Home/FindRestaurants">🔍 Find Restaurants</a>
+        </div>
     </div>
 
-    <!-- ACTIVITY -->
-    <div class="mt-5">
+    <!-- FEATURE CARDS -->
+    <div class="row text-center mb-5">
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100 p-3">
+                <img src="https://images.unsplash.com/photo-1499028344343-cd173ffc68a9" 
+                        class="img-fluid rounded mb-3" />
+                <h5>📊 Track Your Food Journey</h5>
+                <p class="text-muted">Log restaurants, dishes, and ratings all in one place.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100 p-3">
+                <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5" class="img-fluid rounded mb-3" />
+                <h5>👥 See What Others Love</h5>
+                <p class="text-muted">Explore what your friends are eating and trending spots.</p>
+            </div>
+        </div>
+
+        <div class="col-md-4 mb-4">
+            <div class="card shadow-sm h-100 p-3">
+                <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836" class="img-fluid rounded mb-3" />
+                <h5>🌎 Discover Restaurants (API)</h5>
+                <p class="text-muted">
+                    Search restaurants by ZIP code using live external API data.
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div class="mb-5">
+        <h2 class="text-center mb-4">🚀 How It Works</h2>
+
+        <div class="row text-center">
+
+            <div class="col-md-3 mb-3">
+                <h4>1️⃣</h4>
+                <p>Create a review</p>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <h4>2️⃣</h4>
+                <p>Track dishes & ratings</p>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <h4>3️⃣</h4>
+                <p>Explore trends</p>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <h4>4️⃣</h4>
+                <p>Discover new spots</p>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- RECENT ACTIVITY -->
+    <div class="mb-5">
         <h3>🔍 Recent Activity</h3>
 
-        <ul class="list-group">
-            <li class="list-group-item">Alex ate Chicken Alfredo at Olive Garden ⭐ 4.5</li>
-            <li class="list-group-item">Maria tried Sushi Roll at Bento Cafe 🍣</li>
-            <li class="list-group-item">James had a Burrito at Chipotle 🌯</li>
+        <ul class="list-group shadow-sm">
+            @foreach (var r in ViewBag.RecentReviews)
+            {
+                <li class="list-group-item">
+                    <strong>@r.User?.FirstName</strong> tried 
+                    <strong>@r.Dish?.Name</strong> at 
+                    <strong>@r.Restaurant?.Name</strong>
+                    ⭐ @r.Rating
+                    <span class="text-muted float-end">
+                        @r.CreatedAt.ToString("MM/dd")
+                    </span>
+                </li>
+            }   
         </ul>
+
     </div>
 
     <!-- ACTIONS -->
-    <div class="mt-5">
-        <h3>⚙️ Actions</h3>
+    <div class="text-center mb-5">
+        <h3 class="mb-3">⚙️ Quick Actions</h3>
 
-        <div class="d-flex gap-2 flex-wrap mt-3">
+        <div class="d-flex justify-content-center gap-3 flex-wrap">
             <a class="btn btn-brand" href="/Home/Create">Create</a>
-            <a class="btn btn-primary" href="/Home/Read">Read</a>
+            <a class="btn btn-primary" href="/Home/Read">View Reviews</a>
             <a class="btn btn-warning" href="/Home/UpdateList">Update</a>
             <a class="btn btn-danger" href="/Home/DeleteList">Delete</a>
         </div>
+    </div>
+
+    <!-- API INFO SECTION -->
+    <div class="card p-4 shadow-sm mb-5">
+        <h4>🌐 Live Restaurant Search</h4>
+        <p class="text-muted">
+            Taste Tribe integrates with an external restaurant API to fetch real-time restaurant data based on ZIP code.
+            This enhances discovery and helps users explore options beyond their personal network.
+        </p>
+
+        <a href="/Home/FindRestaurants" class="btn btn-outline-dark">
+            Try the Restaurant Finder →
+        </a>
     </div>
 
 </div>

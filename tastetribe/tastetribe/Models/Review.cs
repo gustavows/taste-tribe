@@ -8,6 +8,7 @@
         public int UserId { get; set; }
         public int RestaurantId { get; set; }
         public int DishId { get; set; }
+        public DateTime CreatedAt { get; set; } = DateTime.Now;
 
         public User? User { get; set; }
         public Restaurant? Restaurant { get; set; }

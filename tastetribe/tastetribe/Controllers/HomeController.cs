@@ -20,13 +20,61 @@ namespace tastetribe.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
+            var recentReviews = await _context.Reviews
+                .Include(r => r.User)
+                .Include(r => r.Restaurant)
+                .Include(r => r.Dish)
+                .OrderByDescending(r => r.CreatedAt)
+                .Take(5)
+                .ToListAsync();
+
+            ViewBag.RecentReviews = recentReviews;
+
             return View();
         }
 
-        public IActionResult Data()
+        public async Task<IActionResult> Data()
         {
+            var reviews = await _context.Reviews
+                .Include(r => r.Restaurant)
+                .ToListAsync();
+
+            // Bar chart: Avg rating per restaurant
+            var restaurantRatings = reviews
+                .GroupBy(r => r.Restaurant.Name)
+                .Select(g => new {
+                    restaurant = g.Key,
+                    avgRating = g.Average(r => r.Rating)
+                })
+                .ToList();
+
+            // Pie chart: Cuisine distribution
+            var cuisineData = await _context.Restaurants
+                .GroupBy(r => r.CuisineType)
+                .Select(g => new {
+                    cuisine = g.Key,
+                    count = g.Count()
+                })
+                .ToListAsync();
+
+            // Line chart: Reviews count (fake "weekly" but dynamic)
+            var weeklyData = reviews
+                .GroupBy(r => r.CreatedAt.Date)
+                .OrderBy(g => g.Key)
+                .Select(g => new {
+                    date = g.Key.ToString("MM-dd"),
+                    count = g.Count()
+                })
+                .ToList();
+
+            ViewBag.WeeklyLabels = weeklyData.Select(x => x.date).ToList();
+            ViewBag.WeeklyData = weeklyData.Select(x => x.count).ToList();
+
+            ViewBag.RestaurantRatings = restaurantRatings;
+            ViewBag.CuisineData = cuisineData;
+
             return View();
         }
 
