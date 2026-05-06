@@ -54,7 +54,7 @@
     const restaurantData = @Html.Raw(JsonSerializer.Serialize(ViewBag.RestaurantRatings));
     const cuisineData = @Html.Raw(JsonSerializer.Serialize(ViewBag.CuisineData));
 
-    // ✅ NEW: real labels + data
+    // real labels + data
     const weeklyLabels = @Html.Raw(JsonSerializer.Serialize(ViewBag.WeeklyLabels));
     const weeklyData = @Html.Raw(JsonSerializer.Serialize(ViewBag.WeeklyData));
 
@@ -91,7 +91,7 @@
         }
     });
 
-    // 🔥 LINE (UPDATED)
+    // LINE
     new Chart(document.getElementById("lineChart"), {
         type: "line",
         data: {
